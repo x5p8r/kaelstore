@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ar">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>متجر Kael</title>
+        <link rel="icon" href="images/ico/icon.ico" type="image/x-icon" />
+        <link rel="stylesheet" href="styles.css" />
+    </head>
+    <body dir="rtl">
+        <header class="site-header">
+            <div class="container">
+                <a href="home.html" class="brand">متجر Kael</a>
+                <div class="header-right">
+                    <button id="cartBtn" class="cart-btn">عربة (<span id="cartCount">0</span>)</button>
+                    <button id="menuToggle" class="menu-toggle">☰</button>
+                </div>
+            </div>
+        </header>
+
+        <nav class="categories container">
+            <a class="cat" data-cat="activation" href="activation.html">تفعيل البرامج</a>
+            <a class="cat" data-cat="digital" href="digital.html">منتجات رقمية</a>
+            <a class="cat" data-cat="accessories" href="accessories.html">إكسسوارات</a>
+            <a class="cat" data-cat="general" href="general.html">منتجات عامة</a>
+            <a class="cat" data-cat="custom" href="custom.html">طلبات خاصة</a>
+            <a class="cat active" data-cat="offers" href="all.html">جميع المنتجات</a>
+        </nav>
+        <main class="container">
+            <section id="products" class="products-grid"></section>
+
+            <section id="customRequest" class="hidden">
+                <h2>طلب خاص</h2>
+                <form id="customForm">
+                    <label>الاسم:<input name="name" required></label>
+                    <label>البريد الإلكتروني:<input name="email" type="email" required></label>
+                    <label>تفاصيل الطلب:<textarea name="details" rows="4" required></textarea></label>
+                    <button type="submit">أرسل الطلب</button>
+                </form>
+                <div id="customMsg" class="msg"></div>
+            </section>
+        </main>
+        <aside id="cartPanel" class="cart-panel hidden">
+            <h3>عربة التسوق <button class="cart-close" onclick="closeCart()">×</button></h3>
+            <div id="cartContent">
+                <ul id="cartList"></ul>
+                <div class="cart-footer">
+                    <div class="total-row">
+                        <span class="total-label">المجموع الكلي:</span>
+                        <span class="total-amount"><span id="cartTotal">0.00</span> ₺</span>
+                    </div>
+                    <button id="checkout">المتابعة للدفع</button>
+                </div>
+            </div>
+            <div id="paymentDetails" class="hidden payment-details">
+                <h4>خيارات الدفع</h4>
+
+                
+                <div class="payment-option">
+                    <h5>📱 عبر واتساب</h5>
+                    <p>تواصل معنا مباشرة لإتمام الدفع</p>
+                    <a id="waDirect" class="cta wa-cta" href="https://wa.me/905520420027">تواصل عبر واتساب</a>
+                </div>
+                <div class="payment-actions">
+                    <button id="closePayment" class="secondary-btn">العودة للعربة</button>
+                </div>
+            </div>
+        </aside>
+        <script src="script.js"></script>
+    </body>
