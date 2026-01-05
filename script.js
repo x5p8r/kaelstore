@@ -17,7 +17,6 @@ const menuToggle = document.getElementById('menuToggle')
 
 let cart = []
 
-// Currency & offers settings
 const EXCHANGE_RATE_SHEKEL_TO_TRY = 5.0 // 1 ₪ -> 5.0 TRY (تعديل حسب السوق)
 const OFFER_DISCOUNT = 0.20 // 20% off
 
@@ -41,13 +40,15 @@ const products = {
   general: [
     {id:'g1',title:'ماوس HP',desc:'سلكي-RGB-شحن مجاني',price:99, image:'images/hp-mouse-rgb.jpg'},
     {id:'g2',title:'ماوس باد RGB',desc:'ماوس باد باللون الاسود مع ضوء RGB',price:100, image:'images/maous-pad-rgb.jpg'},
-    {id:'g3',title:'طقم ساعة يد',desc:'ساعة يد مع مسبحة و سوار يد و قداحة-شحن مجاني',price:150, image:'images/black-clock-1.jpg'},
+    {id:'g3',title:'طقم ساعة يد',desc:'ساعة يد مع مسبحة و سوار يد و قداحة-شحن مجاني',price:170, image:'images/black-clock-1.jpg'},
+    {id:'g4',title:'لوحة مفاتيح ميكانيكية',desc:'لوحة مفاتيح ميكانيكية-شحن مجاني',price:290, image:'images/mechanical-keyboard.jpg'},
+    {id:'g5',title:'ماوس و كيبورد بلوتوث',desc:'ماوس 500مللي امبير- كيبورد 150مللي امبير -شحن مجاني',price:190, image:'images/keyboard-maous.jpg'}
 
   ],
   accessories: [
-    {id:'ac1',title:' سماعات بلوتوث ب شاشة',desc:'جودة عالية-شحن مجاني-شاشة لمس',price:154.0, image:'images/airpods-screen.jpg'},
+    {id:'ac1',title:' سماعات بلوتوث ب شاشة',desc:'جودة عالية-شحن مجاني-شاشة لمس',price:174.0, image:'images/airpods-screen.jpg'},
     {id:'ac3',title:'يد سوني 4',desc:'يد سوني اصلية-شحن مجاني',price:159.0, image:'images/sony4-co.jpg'},
-    {id:'ac2',title:'سماعات بلوتوث',desc:'كفالة سنة-جودة عالية-شحن مجاني',price:120, image:'images/air-pods-5proplus.jpg'}
+    {id:'ac2',title:'سماعات بلوتوث',desc:'كفالة سنة-جودة عالية-شحن مجاني',price:150, image:'images/air-pods-5proplus.jpg'}
   ]
 }
 
@@ -66,7 +67,6 @@ function renderProducts(cat='activation'){
   })
 }
 
-// If the page has a products container, it will handle clicks there; otherwise use document-level handler below
 if(productsEl){
   productsEl.addEventListener('click',e=>{
     if(e.target.tagName==='BUTTON' && e.target.dataset.id){
@@ -77,7 +77,6 @@ if(productsEl){
   })
 }
 
-// document-level handler for offer buttons (and other pages)
 document.addEventListener('click', e=>{
   const t = e.target
   if(t.tagName==='BUTTON' && t.dataset && t.dataset.id){
@@ -114,7 +113,6 @@ function updateCartUI(){
     return
   }
 
-  // إعادة إنشاء محتوى العربة العادي
   if(cartContent) {
     cartContent.innerHTML = `
       <ul id="cartList"></ul>
@@ -126,7 +124,6 @@ function updateCartUI(){
         <button id="checkout">المتابعة للدفع</button>
       </div>
     `
-    // إعادة تعريف cartList بعد إعادة إنشاء HTML
     const newCartList = document.getElementById('cartList')
     const newCartTotalEl = document.getElementById('cartTotal')
     const newCheckout = document.getElementById('checkout')
@@ -235,7 +232,6 @@ function renderOffers(){
   const offersRoot = document.getElementById('offersList')
   if(!offersRoot) return
   offersRoot.innerHTML = ''
-  // pick example items from different categories
   const picks = [products.activation[0], products.digital[0], products.general[0], products.accessories[0]].filter(Boolean)
   picks.forEach(p=>{
     const oldTry = toTRY(p.price)
@@ -266,19 +262,16 @@ if(cartBtn){
   })
 }
 
-// Mobile menu toggle
 const categoriesEl = document.querySelector('.categories')
 if(menuToggle && categoriesEl){
   menuToggle.addEventListener('click',()=>{
     categoriesEl.classList.toggle('open')
   })
-  // Close menu when clicking a link
   categoriesEl.addEventListener('click', (e) => {
     if (e.target.tagName === 'A') {
       categoriesEl.classList.remove('open')
     }
   })
-  // Close menu when clicking outside on mobile
   document.addEventListener('click', (e) => {
     if (window.innerWidth <= 768 && !menuToggle.contains(e.target) && !categoriesEl.contains(e.target) && categoriesEl.classList.contains('open')) {
       categoriesEl.classList.remove('open')
@@ -287,10 +280,8 @@ if(menuToggle && categoriesEl){
 }
 
 categories.forEach(btn=>{
-  // Handle both BUTTON elements and A elements with data-cat
   if(btn.tagName === 'BUTTON' || (btn.tagName === 'A' && btn.dataset.cat)){
     btn.addEventListener('click',(e)=>{
-      // Prevent default for links to avoid navigation
       if(btn.tagName === 'A') e.preventDefault()
 
       categories.forEach(b=>b.classList.remove('active'))
@@ -310,7 +301,6 @@ if(customForm){
   })
 }
 
-// Initialise
 loadCart()
 updateCartUI()
 if(closePayment){
@@ -320,7 +310,6 @@ const copyIbanBtn = document.getElementById('copyIban')
 if(copyIbanBtn){
   copyIbanBtn.addEventListener('click', copyIban)
 }
-// If page has products container, render default category
 if(productsEl){
   renderProducts('offers')
 }
