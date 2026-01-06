@@ -42,7 +42,8 @@ const products = {
     {id:'g2',title:'ماوس باد RGB',desc:'ماوس باد باللون الاسود مع ضوء RGB',price:100, image:'images/maous-pad-rgb.jpg'},
     {id:'g3',title:'طقم ساعة يد',desc:'ساعة يد مع مسبحة و سوار يد و قداحة-شحن مجاني',price:170, image:'images/black-clock-1.jpg'},
     {id:'g4',title:'لوحة مفاتيح ميكانيكية',desc:'لوحة مفاتيح ميكانيكية-شحن مجاني',price:290, image:'images/mechanical-keyboard.jpg'},
-    {id:'g5',title:'ماوس و كيبورد بلوتوث',desc:'ماوس 500مللي امبير- كيبورد 150مللي امبير -شحن مجاني',price:190, image:'images/keyboard-maous.jpg'}
+    {id:'g5',title:'ماوس و كيبورد بلوتوث',desc:'ماوس 500مللي امبير- كيبورد 150مللي امبير -شحن مجاني',price:190, image:'images/keyboard-maous.jpg'},
+    {id:`g6`,title:`اكواب قهوة`,desc:'اكواب قهوة عدد 6',price:90, image:'images/coffee-cup.jpg'}
 
   ],
   accessories: [
